@@ -13,7 +13,8 @@
  );
 
  service.interceptors.response.use(
-     async (response: AxiosResponse) => {
+      (response: AxiosResponse) => {
+        return Promise.resolve(response.data);
      },
      (error: any) => {
          return Promise.reject(error);
