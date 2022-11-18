@@ -2,7 +2,7 @@
 	"compilerOptions": {
 		"typeRoots": [
 			"node_modules/@types", // 默认值
-			"src/types"
+			"types"
 		],
 		"types": ["element-plus/global"],
 		"target": "ESNext",
