@@ -62,7 +62,7 @@ module.exports = {
 		body: '请输入详细描述(可选)',
 		breaking: '列出任何BREAKING CHANGES(破坏性修改)(可选)',
 		footer: '请输入要关闭的issue(可选)',
-		confirmCommit: '确认提交？',
+		confirmCommit: '确认提交？(y/n)',
 	},
 
 	// 设置只有 type 选择了 feat 或 fix，才询问 breaking message
