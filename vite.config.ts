@@ -4,11 +4,14 @@ import * as path from "path";
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
+
+const resolve = (dir) => path.resolve(__dirname, dir);
+
 // https://vitejs.dev/config/
 export default defineConfig({
   resolve: {
     alias: {
-      "@": path.resolve(__dirname, "src"),
+      "@": resolve("src"),
     },
   },
   plugins: [
@@ -18,9 +21,12 @@ export default defineConfig({
     Components({
       resolvers: [ElementPlusResolver()],
     }),
-    vue()],
+    vue()
+  ],
   server: {
-    port: 8080, //启动端口
+    port: 8080, //本地启动端口
+    open: true,
+    host: '0.0.0.0',
     // hmr: {
     //   host: "127.0.0.1",
     //   port: 8080,
