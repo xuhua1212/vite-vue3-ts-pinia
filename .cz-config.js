@@ -1,15 +1,15 @@
 module.exports = {
 	// type 类型（定义之后，可通过上下键选择）
 	types: [
-		{ value: '✨feat', name: '✨feat:          增加新功能' },
-		{ value: '🐛fix', name: '🐛fix:           修复bug' },
-		{ value: '📝docs', name: '📝docs:          修改文档' },
-		{ value: '🚀perf', name: '🚀perf:          性能优化' },
-		{ value: '📦build', name: '📦build:         打包' },
-		{ value: '👷ci', name: '👷ci:            CI部署' },
-		{ value: '🔂revert', name: '🔂revert:        版本回退' },
-		{ value: '💎 style', name: '💎style:         样式修改不影响逻辑' },
-		{ value: '🚨test', name: '🚨test:          增删测试' },
+		{ value: 'feat', name: 'feat:          增加新功能' },
+		{ value: 'fix', name: 'fix:           修复bug' },
+		{ value: 'docs', name: 'docs:          修改文档' },
+		{ value: 'style', name: 'style:         代码格式修改' },
+		{ value: 'perf', name: 'perf:          性能优化' },
+		{ value: 'build', name: 'build:         打包' },
+		{ value: 'revert', name: 'revert:        版本回退' },
+		{ value: 'style', name: 'style:         样式修改不影响逻辑' },
+		{ value: 'test', name: 'test:          增删测试' },
 	],
 
 	// scope 类型（定义之后，可通过上下键选择）
