@@ -1,3 +1,11 @@
+<!--
+ * @Author: xuhua
+ * @Date: 2022-11-18 15:54:25
+ * @LastEditors: xuhua
+ * @LastEditTime: 2022-11-22 14:23:41
+ * @FilePath: /vite-vue3-ts-pinia/src/views/login/index.vue
+ * @Description: 
+-->
 <template>
 	<div>
 		登录
@@ -22,35 +30,15 @@
 
 <script setup lang="ts">
 import { useUserStore } from '@/store/modules/user'
-
+import { getUserList } from '@/api/user/login'
 const storename = useUserStore()
 const { x, y } = useMouse()
-const tableData = reactive([
-	{
-		date: '2016-05-03',
-		name: 'Tom',
-		address: 'No. 189, Grove St, Los Angeles',
-		age: 18,
-	},
-	{
-		date: '2016-05-02',
-		name: 'Tom',
-		address: 'No. 189, Grove St, Los Angeles',
-		age: 18,
-	},
-	{
-		date: '2016-05-04',
-		name: 'Tom',
-		address: 'No. 189, Grove St, Los Angeles',
-		age: 18,
-	},
-	{
-		date: '2016-05-01',
-		name: 'Tom',
-		address: 'No. 189, Grove St, Los Angeles',
-		age: 18,
-	},
-])
+let tableData = reactive([])
+
+onMounted(async () => {
+	const res = await getUserList()
+	tableData = res.data.rows
+})
 
 const updateAge = () => {
 	tableData.forEach((item: { age: number }) => item.age++)

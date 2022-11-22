@@ -2,7 +2,7 @@
  * @Author: xuhua
  * @Date: 2022-11-18 15:54:25
  * @LastEditors: xuhua
- * @LastEditTime: 2022-11-18 17:47:25
+ * @LastEditTime: 2022-11-22 13:56:44
  * @FilePath: /vite-vue3-ts-pinia/vite.config.ts
  * @Description:
  */
@@ -14,6 +14,8 @@ import Components from 'unplugin-vue-components/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 
 import { createHtmlPlugin } from 'vite-plugin-html'
+// 引入viteMockServe
+import { viteMockServe } from 'vite-plugin-mock'
 
 const resolve = (dir: string) => path.resolve(__dirname, dir)
 
@@ -47,6 +49,15 @@ export default defineConfig(({ command, mode }) => {
 						title: env.VITE_TITLE,
 					},
 				},
+			}),
+			viteMockServe({
+				mockPath: './mock',
+				prodEnabled: false,
+				watchFiles: true,
+				injectCode: `
+          import { setupProdMockServer } from './mock';
+          setupProdMockServer();
+        `,
 			}),
 		],
 		server: {
