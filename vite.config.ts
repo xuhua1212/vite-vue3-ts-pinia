@@ -2,7 +2,7 @@
  * @Author: xuhua
  * @Date: 2022-11-18 15:54:25
  * @LastEditors: xuhua
- * @LastEditTime: 2022-11-22 13:56:44
+ * @LastEditTime: 2022-12-06 15:33:32
  * @FilePath: /vite-vue3-ts-pinia/vite.config.ts
  * @Description:
  */
@@ -17,13 +17,16 @@ import { createHtmlPlugin } from 'vite-plugin-html'
 // 引入viteMockServe
 import { viteMockServe } from 'vite-plugin-mock'
 
+// script直接添加name插件
+import VueSetupExtend from 'vite-plugin-vue-setup-extend'
+// 生产gz文件
+import viteCompression from 'vite-plugin-compression'
+
 const resolve = (dir: string) => path.resolve(__dirname, dir)
 
 // https://vitejs.dev/config/
 export default defineConfig(({ command, mode }) => {
-	console.log('defineConfig ~  command, mode', command, mode)
 	const env = loadEnv(mode, process.cwd())
-	console.log('defineConfig ~ env', env)
 	return {
 		resolve: {
 			alias: {
@@ -50,16 +53,35 @@ export default defineConfig(({ command, mode }) => {
 					},
 				},
 			}),
-			viteMockServe({
-				mockPath: './mock',
-				prodEnabled: false,
-				watchFiles: true,
-				injectCode: `
+			VueSetupExtend(),
+			// /gzip压缩 生产环境生成 .gz 文件
+			mode === 'production' &&
+				viteCompression({
+					verbose: true,
+					disable: false,
+					threshold: 10240,
+					algorithm: 'gzip',
+					ext: '.gz',
+				}),
+			// mock数据,正式环境不使用
+			mode !== 'production' &&
+				viteMockServe({
+					mockPath: './mock',
+					prodEnabled: false,
+					watchFiles: true,
+					injectCode: `
           import { setupProdMockServer } from './mock';
           setupProdMockServer();
         `,
-			}),
+				}),
 		],
+		css: {
+			preprocessorOptions: {
+				scss: {
+					additionalData: `@use "./src/styles/index.scss" as *;`,
+				},
+			},
+		},
 		server: {
 			port: 8080, //本地启动端口
 			open: true,
