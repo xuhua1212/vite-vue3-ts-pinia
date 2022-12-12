@@ -2,12 +2,12 @@
  * @Author: xuhua
  * @Date: 2022-11-18 15:54:25
  * @LastEditors: xuhua
- * @LastEditTime: 2022-12-12 16:26:49
+ * @LastEditTime: 2022-12-12 18:15:12
  * @FilePath: /vite-vue3-ts-pinia/src/App.vue
  * @Description: 
 -->
 <template>
-	<el-config-provider :size="globalComSize" :locale="zhCn">
+	<el-config-provider :size="globalComSize" :locale="zhCn" :button="{ autoInsertSpace: true }">
 		<router-view />
 	</el-config-provider>
 </template>
@@ -24,21 +24,5 @@ const globalComSize = computed((): globalComSizeType => SettingStore.globalComSi
 
 <style lang="scss">
 #app {
-	position: relative;
-	width: 100%;
-	height: 100%;
-	font-family: Avenir, sans-serif;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-	color: #2c3e50;
-}
-.el-pager li:focus {
-	border: none;
-}
-.el-dropdown:focus {
-	border: none;
-}
-.svg-icon:focus {
-	border: none;
 }
 </style>

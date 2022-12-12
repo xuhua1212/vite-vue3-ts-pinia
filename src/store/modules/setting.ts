@@ -2,7 +2,7 @@
  * @Author: xuhua
  * @Date: 2022-12-12 14:01:26
  * @LastEditors: xuhua
- * @LastEditTime: 2022-12-12 15:36:44
+ * @LastEditTime: 2022-12-12 17:27:59
  * @FilePath: /vite-vue3-ts-pinia/src/store/modules/setting.ts
  * @Description:
  */
@@ -29,6 +29,10 @@ interface SettingState {
 export const useSettingStore = defineStore({
 	id: 'setting',
 	state: (): SettingState => ({ ...defaultSetting }),
+	getters: {
+		// 页面切换动画类名
+		transitionName: (state) => (state.animate ? state.animateMode : ''),
+	},
 	actions: {
 		toggleTheme(dark: boolean) {
 			this.theme = dark ? 'dark' : 'light'

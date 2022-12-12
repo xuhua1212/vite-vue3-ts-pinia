@@ -2,7 +2,7 @@
  * @Author: xuhua
  * @Date: 2022-12-12 16:02:33
  * @LastEditors: xuhua
- * @LastEditTime: 2022-12-12 16:24:51
+ * @LastEditTime: 2022-12-12 17:37:44
  * @FilePath: /vite-vue3-ts-pinia/src/permission.ts
  * @Description:
  */

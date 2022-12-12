@@ -2,7 +2,7 @@
  * @Author: xuhua
  * @Date: 2022-11-18 15:54:25
  * @LastEditors: xuhua
- * @LastEditTime: 2022-12-12 13:52:43
+ * @LastEditTime: 2022-12-12 18:08:58
  * @FilePath: /vite-vue3-ts-pinia/vite.config.ts
  * @Description:
  */
@@ -55,14 +55,13 @@ export default defineConfig(({ command, mode }) => {
 			}),
 			VueSetupExtend(),
 			// /gzip压缩 生产环境生成 .gz 文件
-			mode === 'production' &&
-				viteCompression({
-					verbose: true,
-					disable: false,
-					threshold: 10240,
-					algorithm: 'gzip',
-					ext: '.gz',
-				}),
+			viteCompression({
+				verbose: true,
+				disable: false,
+				threshold: 10240,
+				algorithm: 'gzip',
+				ext: '.gz',
+			}),
 			// mock数据,正式环境不使用
 			viteMockServe({
 				mockPath: './mock',

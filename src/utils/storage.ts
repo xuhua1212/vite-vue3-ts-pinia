@@ -2,7 +2,7 @@
  * @Author: xuhua
  * @Date: 2022-11-18 17:04:24
  * @LastEditors: xuhua
- * @LastEditTime: 2022-11-18 17:18:15
+ * @LastEditTime: 2022-12-12 18:26:54
  * @FilePath: /vite-vue3-ts-pinia/src/utils/storage.ts
  * @Description: 加密工具
  */
@@ -57,7 +57,7 @@ const config: {
 	isEncrypt: boolean
 } = {
 	type: 'localStorage',
-	prefix: 'vite_admin', // 前缀
+	prefix: '', // 前缀
 	expire: 0, // 单位s, 0 默认不过期
 	isEncrypt: false,
 }

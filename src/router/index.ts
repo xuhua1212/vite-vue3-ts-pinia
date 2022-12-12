@@ -2,7 +2,7 @@
  * @Author: xuhua
  * @Date: 2022-11-18 15:54:25
  * @LastEditors: xuhua
- * @LastEditTime: 2022-12-12 16:27:46
+ * @LastEditTime: 2022-12-12 17:33:31
  * @FilePath: /vite-vue3-ts-pinia/src/router/index.ts
  * @Description:
  */
@@ -28,12 +28,6 @@ export const appRoutes: RouteRecordNormalized[] = formatModules(modules, [])
 
 const routes = [
 	{
-		path: '/login',
-		name: 'Login',
-		component: () => import('@/views/login/index.vue'),
-		meta: { title: '登录', keepAlive: false },
-	},
-	{
 		path: '/',
 		name: 'Layout',
 		component: DEFAULT_LAYOUT,
@@ -48,6 +42,12 @@ const routes = [
 				},
 			},
 		],
+	},
+	{
+		path: '/login',
+		name: 'Login',
+		component: () => import('@/views/login/index.vue'),
+		meta: { title: '登录', keepAlive: false },
 	},
 	...appRoutes,
 ]

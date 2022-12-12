@@ -2,6 +2,9 @@ body {
 	--margin: 14px;
 	--padding: 16px;
 }
+// layout变量
+$header-height: 70px;
+$sider-width: 240px;
 
 /* 全局 css 变量 */
 $primaryColor: var(--el-color-primary);
