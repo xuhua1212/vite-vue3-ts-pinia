@@ -2,12 +2,14 @@
  * @Author: xuhua
  * @Date: 2022-12-06 14:40:56
  * @LastEditors: xuhua
- * @LastEditTime: 2022-12-06 14:41:10
+ * @LastEditTime: 2022-12-12 16:28:37
  * @FilePath: /vite-vue3-ts-pinia/src/layout/components/AppMain.vue
  * @Description: 
 -->
 <template>
-	<div>11</div>
+	<div class="app-main">
+		<router-view />
+	</div>
 </template>
 
 <script setup lang="ts"></script>

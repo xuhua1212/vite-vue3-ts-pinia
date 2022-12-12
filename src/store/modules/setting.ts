@@ -1,84 +1,43 @@
 /*
  * @Author: xuhua
- * @Date: 2022-12-06 14:44:54
+ * @Date: 2022-12-12 14:01:26
  * @LastEditors: xuhua
- * @LastEditTime: 2022-12-06 14:49:46
+ * @LastEditTime: 2022-12-12 15:36:44
  * @FilePath: /vite-vue3-ts-pinia/src/store/modules/setting.ts
  * @Description:
  */
 import { defineStore } from 'pinia'
-import { DEFAULT_THEME_COLOR } from '../../config'
+import defaultSetting from '@/config/setting.json'
+import type { globalComSizeType } from '@/config/options'
 
-export const useSettingStore = defineStore('setting', {
-	state: () => ({
-		// menu 是否收缩
-		isCollapse: true,
-		//
-		withoutAnimation: false,
-		device: 'desktop',
-		// 刷新当前页
-		isReload: true,
-		// 主题设置
-		themeConfig: {
-			// 显示设置
-			showSetting: false,
-			// 菜单展示模式 默认 vertical   horizontal / vertical
-			mode: 'vertical',
-			// tagsView 是否展示 默认展示
-			showTag: true,
-			// 页脚
-			footer: true,
-			// 深色模式 切换暗黑模式
-			isDark: false,
-			// 显示侧边栏Logo
-			showLogo: true,
-			// 主题颜色
-			primary: DEFAULT_THEME_COLOR,
-			// element组件大小
-			globalComSize: 'default',
-			// 是否只保持一个子菜单的展开
-			uniqueOpened: true,
-			// 固定header
-			fixedHeader: true,
-			// 灰色模式
-			gray: false,
-			// 色弱模式
-			weak: false,
-		},
-	}),
-	getters: {},
-	// 可以同步 也可以异步
+interface SettingState {
+	theme: 'light' | 'dark'
+	themeColor: string
+	globalComSize: globalComSizeType
+	header: boolean
+	footer: boolean
+	menu: boolean
+	hideMenu: boolean
+	menuWidth: number
+	menuCollapse: boolean
+	tab: boolean
+	tabMode: string
+	animate: boolean
+	animateMode: string
+}
+
+export const useSettingStore = defineStore({
+	id: 'setting',
+	state: (): SettingState => ({ ...defaultSetting }),
 	actions: {
-		// 设置主题
-		setThemeConfig({ key, val }) {
-			this.themeConfig[key] = val
+		toggleTheme(dark: boolean) {
+			this.theme = dark ? 'dark' : 'light'
+			document.body.setAttribute('element-theme', dark ? 'dark' : 'light')
+			this.setThemeColor(this.themeColor)
 		},
-		// 切换 Collapse
-		setCollapse(value) {
-			this.isCollapse = value
-			this.withoutAnimation = false
-		},
-		// 关闭侧边栏
-		closeSideBar({ withoutAnimation }) {
-			this.isCollapse = false
-			this.withoutAnimation = withoutAnimation
-		},
-		toggleDevice(device) {
-			this.device = device
-		},
-		// 刷新
-		setReload() {
-			this.isReload = false
-			setTimeout(() => {
-				this.isReload = true
-			}, 50)
+		setThemeColor(color: string) {
+			if (!color) return
+			this.themeColor = color
 		},
 	},
-	// 这部分数据不需要存储
-	// persist: {
-	//     // 本地存储的名称
-	//     key: "settingState",
-	//     //保存的位置
-	//     storage: window.localStorage,//localstorage
-	// },
 })
