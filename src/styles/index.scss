@@ -1,4 +1,15 @@
-@import './variables.scss';
+// 基础样式
+@import './base.scss';
+// 全局类名
+@import './global.scss';
+// 滚动条重置(自定义样式)
+@import './scorllbar-reset.scss';
+// 动画样式
 @import './transition.scss';
-@import './common.scss';
-@import './element.scss';
+// 自定义加载条样式
+@import './nprogress.scss';
+
+// 业务页面几乎都应该在根元素上挂载 class="app-container"，以保持页面美观
+.app-container {
+	padding: 20px;
+}
