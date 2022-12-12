@@ -2,7 +2,7 @@
  * @Author: xuhua
  * @Date: 2022-11-18 15:54:25
  * @LastEditors: xuhua
- * @LastEditTime: 2022-12-06 15:33:32
+ * @LastEditTime: 2022-12-12 13:52:43
  * @FilePath: /vite-vue3-ts-pinia/vite.config.ts
  * @Description:
  */
@@ -64,16 +64,15 @@ export default defineConfig(({ command, mode }) => {
 					ext: '.gz',
 				}),
 			// mock数据,正式环境不使用
-			mode !== 'production' &&
-				viteMockServe({
-					mockPath: './mock',
-					prodEnabled: false,
-					watchFiles: true,
-					injectCode: `
+			viteMockServe({
+				mockPath: './mock',
+				prodEnabled: false,
+				watchFiles: true,
+				injectCode: `
           import { setupProdMockServer } from './mock';
           setupProdMockServer();
         `,
-				}),
+			}),
 		],
 		css: {
 			preprocessorOptions: {
