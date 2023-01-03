@@ -34,7 +34,9 @@
 		"build/**/*.ts",
 		"build/**/*.d.ts",
 		"mock/**/*.ts",
-		"vite.config.ts"
+		"vite.config.ts",
+		"./src/auto-imports.d.ts",
+		"./src/components.d.ts"
 	],
 	"exclude": ["node_modules", "tests/server/**/*.ts", "dist", "**/*.js"]
 }

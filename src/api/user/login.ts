@@ -2,23 +2,14 @@
  * @Author: xuhua
  * @Date: 2022-11-18 15:54:25
  * @LastEditors: xuhua
- * @LastEditTime: 2022-11-22 14:23:22
+ * @LastEditTime: 2023-01-03 11:12:30
  * @FilePath: /vite-vue3-ts-pinia/src/api/user/login.ts
  * @Description:
  */
 import request from '@/utils/request'
-
 /**
  * 登录
  */
-// eslint-disable-next-line @typescript-eslint/ban-types
-interface IResponseType<T = {}> {
-	code: number
-	status?: number
-	message: string
-	data: T
-}
-
 interface UserResponseType {
 	[x: string]: any
 	id: string
